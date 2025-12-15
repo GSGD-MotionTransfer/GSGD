@@ -1,0 +1,49 @@
+# Ignore the data folder
+data
+dataset1
+Dataset/
+FacesData/
+TeaserObjects/
+ResultsZOO/
+
+
+# Ignore the output folder
+outputs/
+visuals/
+Outputs/
+Outputs_backup/
+Output*/
+
+# Ignore special module chamferdist
+chamferdist/
+pytorch3d/
+
+.vscode/
+.idea/
+
+**/sbatch_logs/
+
+**/__pycache__/
+**/wandb/
+
+# Ignore special module chamferdist
+chamferdist/
+
+# output/debug folders
+
+debug*
+results
+hope/
+job_scripts/
+utils_yarin/
+wandb/
+MixamoData/
+__pycache__/
+configs/MT3D_dev.yaml
+
+tmp.sh
+
+# Submodules (due to fromatting change)
+KNN_CUDA
+SC4D
+co-tracker

@@ -1,0 +1,16 @@
+[submodule "SC4D"]
+	path = SC4D
+	url = https://github.com/JarrentWu1031/SC4D.git
+[submodule "diff-gaussian-rasterization"]
+	path = diff-gaussian-rasterization
+	url = https://github.com/ashawkey/diff-gaussian-rasterization
+[submodule "KNN_CUDA"]
+	path = KNN_CUDA
+	url = https://github.com/unlimblue/KNN_CUDA.git
+[submodule "co-tracker"]
+	path = co-tracker
+	url = https://github.com/facebookresearch/co-tracker.git
+[submodule "reenact-anything"]
+	path = reenact-anything
+	url = https://github.com/galhar/reenact-anything.git
+	branch = main

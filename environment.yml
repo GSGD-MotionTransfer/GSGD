@@ -1,0 +1,64 @@
+name: mt3d
+channels:
+  - pytorch
+  - nvidia/label/cuda-12.1.0
+  - xformers
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - pip
+  - setuptools
+  - wheel
+  - ninja
+
+  # CUDA stack
+  - cuda-toolkit=12.1
+  - cuda-compiler=12.1
+  - cuda-nvcc=12.1
+
+  - gcc=11.2.0
+  - gxx=11.2.0
+  - c-compiler=1.5.2
+  - cxx-compiler=1.5.2
+
+  # PyTorch stack (conda versions — REQUIRED)
+  - pytorch=2.4.1
+  - torchvision=0.19.1
+  - torchaudio=2.4.1
+  - pytorch-cuda=12.1
+
+  # FIX: MKL < 2024.1 (avoid iJIT_NotifyEvent crash)
+  - "mkl<2024.1"
+  - "mkl-devel<2024.1"
+  - "mkl-include<2024.1"
+
+  - xformers=0.0.28.post1
+
+  - pip:
+      - tqdm
+      - rich
+      - pandas
+      - matplotlib
+      - opencv-python
+      - imageio
+      - imageio-ffmpeg
+      - omegaconf
+      - rembg
+      - einops
+      - plyfile
+      - pygltflib
+      - huggingface_hub
+      - accelerate
+      - transformers==4.44.2
+      - open3d
+      - controlnet_aux
+      - mediapipe
+      - diffusers==0.30.2
+      - onnxruntime
+      - wandb
+      - pillow==10.4.0
+      - numpy==1.26.4
+      - packaging==24.1
+      - torchmetrics

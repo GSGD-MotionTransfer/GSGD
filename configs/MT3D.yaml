@@ -1,0 +1,186 @@
+### Inversion parameters starts here
+dataset_name: "Outputs/MotionExtraction/Sophie/Jumping_Jacks"
+video_name: "Joe"
+# report_to_wandb: True
+
+# estimated elevation angle for input frames
+elevation: 0
+# reference image resolution
+ref_size: 512
+
+# training or testing
+train_dynamic: True
+# training iterations
+iters_s1: 0
+iters_s2: 5000
+iters_s3: 0
+# Iterations to gradually add frames to optimization, until optimized on the full video
+all_frames_steps: 3000.0
+# guidance loss weights (0 to disable)
+lambda_zero123: 1
+# training batch size per iter
+batch_size: 4
+# training iterations for the coarse stage
+min_ver: -30
+max_ver: 30
+anneal_timestep: True
+# training camera radius
+radius: 2
+# training camera fovy
+fovy: 49.1 # align with zero123 rendering setting (ref: https://github.com/cvlab-columbia/zero123/blob/main/objaverse-rendering/scripts/blender_script.py#L61
+# prob to invert background color during training (0 = always black, 1 = always white)
+invert_bg_prob: 0.5
+# vis resolution
+H: 800
+W: 800
+# FPS
+FPS_iter: 1000
+# ca (canonical alignment) loss 
+lambda_ca: 0.0
+# ga loss
+add_ga: True
+ga_chamfer: True
+lambda_ga1: 10.0
+lambda_ga2: 10000.0
+# arap loss
+use_arap: True
+arap_start_iter: 1000
+lambda_arap: 1.0
+override_deformation_rotation: True
+# Other losses:
+lambda_mse: 0 #5000.0
+lambda_mask: 0 #500.0
+lambda_lpips: 500 #100
+low_pass_kernel: 9
+low_pass_sigma: 5.0 #for some reason with 2.0 it might have a bug
+lambda_low_freq_motion: 0
+diff_func_low_freq_motion: lpips
+# continue training
+load_stage: ""
+# scheduler
+t_range_s1: [0.6, 0.8]
+t_range_s2: [0.2, 0.8]
+save_inter: 500
+
+### Gaussian splatting parameters
+num_pts: 100000
+num_cpts: 512
+sh_degree: 0
+opacity_lr: 0.05
+scaling_lr: 0.005
+percent_dense: 0.01
+density_start_iter: 100
+density_end_iter: 1000
+densification_interval: 100
+densification_interval_s2: 1000
+opacity_reset_interval: 200000
+densify_grad_threshold: 0.01
+
+position_lr_init: 0.01
+position_lr_final: 0.0002
+position_lr_delay_mult: 0.02
+position_lr_max_steps: 3500
+feature_lr: 0.01
+rotation_lr: 0.005
+c_radius_lr: 0.005
+deform_lr_init: 0.0002
+deform_lr_final: 0.0001
+deform_learn_start: 0
+deformation_lr_delay_mult: 0.01
+c_position_lr_init: 0.000002
+c_position_lr_final: 0.000002
+c_position_lr_delay_mult: 0.02
+r_lr: 0.01
+
+init_type: ag
+init_ratio: 1
+
+### Inference
+test_step: 
+test_stage: s2
+test_azi: 0
+do_inference: True
+# mt3d:
+check_inter: 10000000
+log_quick_iters: 10000000
+render_type: multi_view
+save_plys: False
+
+# Extraction Parameters starts here
+# Dataset/output Location
+dataset_path: "dataset1"
+output_path: "Outputs"
+# Training Extraction
+seed: 0
+# max_train_steps: 10000
+# num_train_epochs: 10000
+# checkpointing_steps: 500
+# validation_steps: 2500
+# reenact anything:
+max_train_steps: 3000
+num_train_epochs: 3000
+checkpointing_steps: 500
+validation_steps: 500
+
+
+learning_rate: 0.01  # Default was 0.0001
+val_figures: []
+
+# Training Insertion
+specify_views: False
+report_to_wandb: False
+fps_save: 10
+
+# Performance optimizations
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+enable_xformers_memory_efficient_attention: true
+pretrained_model_name_or_path: stabilityai/stable-video-diffusion-img2vid
+
+# Data loading settings
+num_frames: 14
+num_tokens_in_motion_features: 5
+mixed_precision: fp16
+num_workers: 0
+
+# Additional Arguments
+base_folder: null
+revision: null
+same_noise_over_iterations: false
+different_noise_over_iterations_cond: false
+different_noise_over_iterations_latents: false
+different_noise_over_iterations_time_ids: false
+width: 1024
+height: 576
+validation_images_path: null
+per_gpu_batch_size: 1
+scale_lr: false
+lr_scheduler: "constant"
+lr_warmup_steps: 500
+conditioning_dropout_prob: null
+use_8bit_adam: false
+allow_tf32: false
+use_ema: false
+non_ema_revision: null
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_weight_decay: 0.01
+adam_epsilon: 1e-8
+max_grad_norm: 1.0
+push_to_hub: false
+hub_token: null
+hub_model_id: null
+logging_dir: "logs"
+report_to: "tensorboard"
+local_rank: -1
+checkpoints_total_limit: 2
+resume_from_checkpoint: null
+resume_from_checkpoint_dir: null
+pretrain_unet: null
+
+output_dir: wrong_dir
+
+
+# Evaluation params:
+
+cotracker_model_path: co-tracker/checkpoints/scaled_offline.pth
