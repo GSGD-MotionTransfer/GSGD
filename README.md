@@ -181,7 +181,15 @@ python evaluate_output.py \
 
 ## How to Use Your Own Target
 
+**Important:** Your 3DGS model must have no spherical harmonics. When creating the 3DGS using the [gaussian-splatting repository](https://github.com/graphdeco-inria/gaussian-splatting), use `--sh_degree 0`. (For example:
+```bash
+python 3dgs/train.py -s "$dataset_path/dataset" --model_path "$dataset_path/output" --disable_viewer --sh_degree 0
+```
+)\
+\
 To use your own 3D Gaussian Splatting (3DGS) model as a target, you need to prepare it in the same format as the targets in the `web_crawled` dataset. Specifically, you need to manually scale and rotate your target 3DGS to match the coordinate system and scale used in our pipeline.
+
+
 
 We recommend using the [SuperSplat editor](https://superspl.at/editor) for this normalization process:
 
