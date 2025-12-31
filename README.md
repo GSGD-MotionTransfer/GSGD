@@ -92,8 +92,8 @@ This dataset enables evaluation with supervised metrics and provides human motio
 ### Clone the Repository
 
 ```bash
-git clone --recursive git@github.com:YarinBekor/MotionTransfer3D.git
-cd MotionTransfer3D
+git clone --recursive https://github.com/GSGD-MotionTransfer/GSGD.git
+cd GSGD
 ```
 
 ### Create the Conda Environment
