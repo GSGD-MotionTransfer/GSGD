@@ -1015,7 +1015,6 @@ def init_wandb(args):
     }
 
     wandb.init(
-        entity="godaddykaggle",  # using this one since I dont have premium and I have this one as a team
         project="motionTransfer3D",
         config=json_friendly_config,
         group=args.get("run_group", None),
